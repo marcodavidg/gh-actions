@@ -1,0 +1,17 @@
+name: Run tests for web server
+on: push
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get the code
+              uses: actions/checkout@v3
+            - name: Install new NodeJS
+              uses: actions/setup-node@v3  
+              with:
+                node-version: 18
+            - name: Install dependencies
+              run: npm ci
+            - name: Run the tests
+              run: npm test
+
